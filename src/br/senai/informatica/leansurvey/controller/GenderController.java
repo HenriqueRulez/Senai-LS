@@ -40,11 +40,11 @@ public class GenderController {
 	}
 	
 	@RequestMapping(value="/gender/{id}", method=RequestMethod.PUT, consumes=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Gender> update (@PathVariable long id, @RequestBody String description){
+	public ResponseEntity<Gender> update (@PathVariable long id, @RequestBody Gender gender){
 		
 		
 		try {
-			genderDao.updateGender(description, id);
+			genderDao.updateGender(gender.getDescription(), id);
 			return new ResponseEntity<>(HttpStatus.OK);
 			
 		} catch (Exception e) {
